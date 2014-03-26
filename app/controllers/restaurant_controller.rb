@@ -1,9 +1,10 @@
 class RestaurantController < UIViewController
-  attr_accessor :restaurant
+  attr_accessor :restaurant, :location
 
-  def initWithRestaurant(restaurant)
+  def initWithRestaurant(restaurant, location)
     initWithNibName(nil, bundle:nil)
     self.restaurant = restaurant
+    self.location = location
     self
   end
 
@@ -22,7 +23,22 @@ class RestaurantController < UIViewController
     @restaurant_info.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 4)
     self.view.addSubview @restaurant_info
 
+    @map_button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
+    @map_button.setTitle("Map it!", forState:UIControlStateNormal)
+    @map_button.sizeToFit
+    @map_button.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height / 3)
+    self.view.addSubview @map_button
+
+    @map_button.when(UIControlEventTouchUpInside) do
+      p self.location
+        self.display_map(self.location)
+    end
+
+
   end
 
+  def display_map(location)
+    self.navigationController.pushViewController(MapController.alloc.initWithLocation(location), animated:true)
+  end
 
 end

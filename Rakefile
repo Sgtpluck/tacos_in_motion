@@ -12,5 +12,5 @@ end
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'taco911'
-  app.frameworks += ['CoreData', 'CoreLocation']
+  app.frameworks += ['CoreData', 'CoreLocation', 'MapKit']
 end
