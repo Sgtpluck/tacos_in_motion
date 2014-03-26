@@ -24,7 +24,8 @@ class FoodController < UIViewController
             lm.delegate = self
         end
         @location_manager.startUpdatingLocation
-        p @location_manager.location.coordinate
+        @taco_place = TacoFinder.find(@location_manager)
+        
         @taco_button.enabled = true
     end
   end
