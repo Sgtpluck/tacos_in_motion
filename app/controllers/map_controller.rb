@@ -16,7 +16,7 @@ class MapController < UIViewController
   def viewDidLoad
     view.frame = self.view.bounds
 
-    region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(self.latitude, self.longitude), MKCoordinateSpanMake(3.1, 3.1))
+    region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(self.latitude, self.longitude), MKCoordinateSpanMake(0.01, 0.01))
     self.view.setRegion(region)
 
   end
