@@ -3,7 +3,7 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.makeKeyAndVisible
 
-    controller = LocationController.alloc.initWithNibName(nil, bundle:nil)
+    controller = FoodController.alloc.initWithNibName(nil, bundle:nil)
     home_controller = UINavigationController.alloc.initWithRootViewController(controller)
 
      @window.rootViewController = home_controller

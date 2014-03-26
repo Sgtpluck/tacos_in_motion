@@ -1,4 +1,4 @@
-class LocationController < UIViewController
+class FoodController < UIViewController
   def viewDidLoad
     super
 
@@ -17,7 +17,15 @@ class LocationController < UIViewController
     @taco_button.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height / 4)
     self.view.addSubview @taco_button
 
+    @taco_button.when(UIControlEventTouchUpInside) do
+        @taco_button.enabled = false
 
-
+        @location_manager ||= CLLocationManager.alloc.init.tap do |lm|
+            lm.delegate = self
+        end
+        @location_manager.startUpdatingLocation
+        p @location_manager.location.coordinate
+        @taco_button.enabled = true
+    end
   end
 end
