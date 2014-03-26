@@ -24,9 +24,14 @@ class FoodController < UIViewController
             lm.delegate = self
         end
         @location_manager.startUpdatingLocation
-        @taco_place = TacoFinder.find(@location_manager)
-        
-        @taco_button.enabled = true
+        TacoFinder.find(@location_manager) do |taco_place|
+            @taco_button.enabled = true
+            self.display_tacos(taco_place)
+        end
     end
+  end
+
+  def display_tacos(restaurant)
+    self.navigationController.pushViewController(RestaurantController.alloc.initWithRestaurant(restaurant), animated:true)
   end
 end
