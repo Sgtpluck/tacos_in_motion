@@ -20,10 +20,5 @@ class MapController < UIViewController
 
     region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(self.latitude, self.longitude), MKCoordinateSpanMake(0.01, 0.01))
     self.view.setRegion(region)
-    # @user = MKPinAnnotationView.alloc.initWithAnnotation(CLLocationCoordinate2D.new(self.latitude, self.longitude), reuseIdentifier:nil)
-    # p @user
-    # @user.canShowCallout = true
-    # @user.animatesDrop = true
-    # @user
   end
 end
