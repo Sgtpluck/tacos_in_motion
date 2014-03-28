@@ -24,7 +24,7 @@ class MapController < UIViewController
   end
 
   def set_restaurant_pin(restaurant)
-    # Pin.new(restaurant).place_on_map
+    Pin.new(restaurant).place_on_map(@mapView)
   end
 
   def setRegion(coordinate)

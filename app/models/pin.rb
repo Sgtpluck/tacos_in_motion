@@ -1,16 +1,27 @@
 class Pin
-  attr_accessor :name, :address, :marker, :latitude, :longitude
+  attr_accessor :name, :address, :marker, :latitude, :longitude, :address
 
   def initialize(hash)
     @name = hash["name"]
-    @address = (hash['location']['display_address'])
-    # @url = hash[]
+    @latitude = hash['geometry']['location']['lat']
+    @longitude = hash['geometry']['location']['lng']
+    @marker = nil
+    @id = hash['id']
+    @address = hash['vicinity']
+
   end
 
-  def place_on_map(map=nil)
+  def place_on_map(map)
     @map ||= map
     @marker = MKPointAnnotation.alloc.init
-    @marker.setCoordinate
+    @marker.setCoordinate CLLocationCoordinate2D.new(latitude, longitude)
+
+    @pin_view = MKPinAnnotationView.alloc.initWithAnnotation(@marker, reuseIdentifier:nil)
+
+    # @pin_view.animatesDrop = true
+    @map.addAnnotation @marker
+    @marker.setTitle name
+    @marker.setSubtitle @address
   end
 
 end

@@ -18,7 +18,7 @@ class RestaurantController < UIViewController
     @restaurant_info.lineBreakMode = UILineBreakModeWordWrap
     @restaurant_info.numberOfLines = 0
     @restaurant_info.frame = [[0, 0], [view.frame.size.width - 50, view.frame.size.height + 30]]
-    @restaurant_info.text = "#{self.restaurant['name']} is the closest taco place! It's located at #{self.restaurant['location']['display_address'].join(" ")}"
+    @restaurant_info.text = "#{self.restaurant['name']} is the closest taco place! It's located at #{self.restaurant['vicinity']}"
     @restaurant_info.sizeToFit
     @restaurant_info.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 3)
     self.view.addSubview @restaurant_info
