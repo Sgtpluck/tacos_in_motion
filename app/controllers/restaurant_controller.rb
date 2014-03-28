@@ -30,14 +30,14 @@ class RestaurantController < UIViewController
     self.view.addSubview @map_button
 
     @map_button.when(UIControlEventTouchUpInside) do
-        self.display_map(self.location)
+        self.display_map(self.location, self.restaurant)
     end
 
 
   end
 
-  def display_map(location)
-    self.navigationController.pushViewController(MapController.alloc.initWithLocation(location), animated:true)
+  def display_map(location, restaurant)
+    self.navigationController.pushViewController(MapController.alloc.initWithLocation(location, restaurant), animated:true)
   end
 
 end
